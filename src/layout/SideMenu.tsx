@@ -9,6 +9,7 @@ import {
   ListItemText,
   makeStyles,
   Theme,
+  useTheme,
 } from "@material-ui/core";
 import React, { ReactElement } from "react";
 import BookIcon from "@material-ui/icons/Book";
@@ -30,8 +31,18 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const SideMenu: React.FC = (): ReactElement => {
+type SideMenuProps = {
+  window?: () => Window;
+  mobileOpen?: boolean;
+  toggleFunc?: VoidFunction;
+};
+
+const SideMenu: React.FC<SideMenuProps> = (
+  props: SideMenuProps
+): ReactElement => {
+  const { window, mobileOpen, toggleFunc } = props;
   const classes = useStyles();
+  const theme = useTheme();
 
   const drawer = (
     <div>
@@ -48,10 +59,27 @@ const SideMenu: React.FC = (): ReactElement => {
     </div>
   );
 
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
   return (
     <nav className={classes.drawer} aria-label="menus">
       <Hidden smUp implementation="css">
-        <Drawer></Drawer>
+        <Drawer
+          container={container}
+          variant="temporary"
+          anchor={theme.direction === "rtl" ? "right" : "left"}
+          open={mobileOpen}
+          onClose={toggleFunc}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+        >
+          {drawer}
+        </Drawer>
       </Hidden>
       <Hidden xsDown implementation="css">
         <Drawer

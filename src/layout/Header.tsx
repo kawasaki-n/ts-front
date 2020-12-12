@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import {
   AppBar,
   createStyles,
@@ -9,8 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-
-const drawerWidth = 240;
+import SideMenu from "./SideMenu";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,22 +31,32 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Header: React.FC = (): ReactElement => {
   const classes = useStyles();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   return (
-    <AppBar position="fixed" className={classes.appBar}>
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          className={classes.menuButton}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h5" noWrap>
-          Header
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <div>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h5" noWrap>
+            Header
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <SideMenu mobileOpen={mobileOpen} toggleFunc={handleDrawerToggle} />
+    </div>
   );
 };
 
