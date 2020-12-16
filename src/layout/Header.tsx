@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import SideMenu from "./SideMenu";
+import { Link } from "react-router-dom";
+import { NONAME } from "dns";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
       //   width: `calc(100% - ${drawerWidth}px)`,
       //   marginLeft: drawerWidth,
       // },
+    },
+    headerTitle: {
+      textDecoration: "none",
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -50,8 +55,8 @@ const Header: React.FC = (): ReactElement => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h5" noWrap>
-            Header
+          <Typography color="inherit" variant="h5" noWrap component={Link} to={"/"} className={classes.headerTitle}>
+            Oneline Book Store by typescript
           </Typography>
         </Toolbar>
       </AppBar>

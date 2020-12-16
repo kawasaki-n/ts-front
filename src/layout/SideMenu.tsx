@@ -9,10 +9,12 @@ import {
   ListItemText,
   makeStyles,
   Theme,
+  Toolbar,
   useTheme,
 } from "@material-ui/core";
 import React, { ReactElement } from "react";
 import BookIcon from "@material-ui/icons/Book";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -24,7 +26,6 @@ const useStyles = makeStyles((theme: Theme) =>
         flexShrink: 0,
       },
     },
-    toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
     },
@@ -46,9 +47,9 @@ const SideMenu: React.FC<SideMenuProps> = (
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
+      <Toolbar />
       <List>
-        <ListItem button key="Books">
+        <ListItem button key="Books" component={Link} to={"/bookList"}>
           <ListItemIcon>
             <BookIcon />
           </ListItemIcon>
