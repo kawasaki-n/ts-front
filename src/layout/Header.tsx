@@ -11,16 +11,11 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import SideMenu from "./SideMenu";
 import { Link } from "react-router-dom";
-import { NONAME } from "dns";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
-      // [theme.breakpoints.up("sm")]: {
-      //   width: `calc(100% - ${drawerWidth}px)`,
-      //   marginLeft: drawerWidth,
-      // },
     },
     headerTitle: {
       textDecoration: "none",
