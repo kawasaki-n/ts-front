@@ -1,6 +1,9 @@
-import { Container, createStyles, Grid, makeStyles, Theme } from "@material-ui/core";
-import React, { ReactElement, useEffect, useState } from "react";
-import BookCard from "./BookCard";
+import React, { ReactElement, useEffect, useState } from 'react';
+
+import { Container, createStyles, Grid, makeStyles, Theme } from '@material-ui/core';
+
+import BookAddIcon from './BookAddIcon';
+import BookCard from './BookCard';
 
 const useStyles = makeStyles((theme: Theme) => 
     createStyles({
@@ -28,17 +31,20 @@ const BookList: React.FC = (): ReactElement => {
             setBooks(res.books);
         })
         .catch(err => console.log(err));
-    }, books);
+    }, [setBooks]);
     return(
-        <Container className={classes.bookCard} maxWidth="md">
-            <Grid container spacing={4}>
-                {books.map((book: Book, i: number) => (
-                    <Grid item key={i} xs={12} sm={6} md={4}>
-                        <BookCard title={book.name} author={book.author} url={book.url} />
-                    </Grid>
-                ))}
-            </Grid>
-        </Container>
+        <div>
+            <Container className={classes.bookCard} maxWidth="md">
+                <Grid container spacing={4}>
+                    {books.map((book: Book, i: number) => (
+                        <Grid item key={i} xs={12} sm={6} md={4}>
+                            <BookCard title={book.name} author={book.author} url={book.url} />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+            <BookAddIcon />
+        </div>
     );
 }
 

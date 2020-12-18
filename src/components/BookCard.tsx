@@ -1,5 +1,8 @@
-import { Button, Card, CardActions, CardContent, CardMedia, createStyles, makeStyles, Theme, Typography } from "@material-ui/core";
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react';
+
+import {
+    Button, Card, CardActions, CardContent, createStyles, makeStyles, Typography
+} from '@material-ui/core';
 
 type BookCardProps = {
     title: string;
@@ -7,7 +10,7 @@ type BookCardProps = {
     url: string;
 }
 
-const useSytles = makeStyles((theme: Theme) =>
+const useSytles = makeStyles(() =>
     createStyles({
         card: {
             height: '100%',
@@ -17,7 +20,6 @@ const useSytles = makeStyles((theme: Theme) =>
         cardContent: {
             flexGrow: 1,
         },
-        
     })
 );
 
@@ -25,7 +27,6 @@ const BookCard: React.FC<BookCardProps> = (props: BookCardProps): ReactElement =
     const classes = useSytles();
     return(
         <Card className={classes.card}>
-            <CardMedia />
             <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h4">
                     {props.title}
