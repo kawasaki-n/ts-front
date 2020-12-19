@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import {
     Button, Card, CardActions, CardContent, createStyles, IconButton, makeStyles, Typography
@@ -29,7 +28,6 @@ const useSytles = makeStyles(() =>
 
 const BookCard: React.FC<BookCardProps> = (props: BookCardProps): ReactElement => {
     const classes = useSytles();
-    const history = useHistory();
     const handleDelete = (id: number) => {
         fetch("http://localhost:8080/api/books/delete/"+id, {
             method: 'DELETE',

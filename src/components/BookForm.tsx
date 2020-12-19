@@ -40,6 +40,7 @@ const BookForm: React.FC = (): ReactElement => {
         })
         .then(res => res.json())
         .then((result) => {
+            console.log(result.message);
             history.push('/bookList');
         })
         .catch(err => {
