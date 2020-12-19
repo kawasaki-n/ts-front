@@ -7,7 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         fab:{
-           position: 'absolute',
+           position: 'fixed',
            bottom: theme.spacing(5),
            right: theme.spacing(5),
            zIndex: theme.zIndex.appBar - 1,
