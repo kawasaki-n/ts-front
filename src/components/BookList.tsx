@@ -24,13 +24,16 @@ type Book = {
 const BookList: React.FC = (): ReactElement => {
     const classes = useStyles();
     const [books, setBooks] = useState<Book[]>([]);
-    useEffect(() => {
+    const fetchBooks = () => {
         fetch("http://localhost:8080/api/books/all")
         .then(res => res.json())
         .then((res) => {
             setBooks(res.books);
         })
         .catch(err => console.log(err));
+    }
+    useEffect(() => {
+        fetchBooks();
     }, [setBooks]);
     return(
         <div>
@@ -38,7 +41,7 @@ const BookList: React.FC = (): ReactElement => {
                 <Grid container spacing={4}>
                     {books.map((book: Book, i: number) => (
                         <Grid item key={i} xs={12} sm={6} md={4} lg={3}>
-                            <BookCard title={book.name} author={book.author} url={book.url} />
+                            <BookCard id={book.id} title={book.name} author={book.author} url={book.url} fetchBookFunction={fetchBooks} />
                         </Grid>
                     ))}
                 </Grid>

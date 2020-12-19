@@ -28,7 +28,7 @@ const BookForm: React.FC = (): ReactElement => {
         setValues({...values, [e.target.id]: e.target.value});
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(values);
         fetch('http://localhost:8080/api/books/add', {
