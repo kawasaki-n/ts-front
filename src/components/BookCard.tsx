@@ -36,7 +36,7 @@ const BookCard: React.FC<BookCardProps> = (props: BookCardProps): ReactElement =
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button href={props.url} size="small" color="primary">
+                <Button href={props.url} size="small" color="primary" target="_blank" rel="noopener">
                     Link
                 </Button>
             </CardActions>

@@ -1,20 +1,11 @@
+import React, { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
+
 import {
-  createStyles,
-  Divider,
-  Drawer,
-  Hidden,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  makeStyles,
-  Theme,
-  Toolbar,
-  useTheme,
-} from "@material-ui/core";
-import React, { ReactElement } from "react";
-import BookIcon from "@material-ui/icons/Book";
-import { Link } from "react-router-dom";
+    createStyles, Divider, Drawer, Hidden, List, ListItem, ListItemIcon, ListItemText, makeStyles,
+    Theme, Toolbar, useTheme
+} from '@material-ui/core';
+import BookIcon from '@material-ui/icons/Book';
 
 const drawerWidth = 240;
 
@@ -49,7 +40,7 @@ const SideMenu: React.FC<SideMenuProps> = (
     <div>
       <Toolbar />
       <List>
-        <ListItem button key="Books" component={Link} to={"/bookList"}>
+        <ListItem button key="Books" component={Link} to={"/bookList"} onClick={toggleFunc}>
           <ListItemIcon>
             <BookIcon />
           </ListItemIcon>

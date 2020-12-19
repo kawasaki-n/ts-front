@@ -1,4 +1,5 @@
 import React, { ReactElement, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Button, createStyles, makeStyles, TextField, Theme } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
@@ -20,6 +21,7 @@ const BookForm: React.FC = (): ReactElement => {
         author: '',
         url: '',
     });
+    const history = useHistory();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -29,6 +31,20 @@ const BookForm: React.FC = (): ReactElement => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log(values);
+        fetch('http://localhost:8080/api/books/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values)
+        })
+        .then(res => res.json())
+        .then((result) => {
+            history.push('/bookList');
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     return(
