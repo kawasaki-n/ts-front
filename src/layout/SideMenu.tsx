@@ -40,7 +40,7 @@ const SideMenu: React.FC<SideMenuProps> = (
     <div>
       <Toolbar />
       <List>
-        <ListItem button key="Books" component={Link} to={"/bookList"} onClick={toggleFunc}>
+        <ListItem button key="Books" component={Link} to={"/bookList"}>
           <ListItemIcon>
             <BookIcon />
           </ListItemIcon>
