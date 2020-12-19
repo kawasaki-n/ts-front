@@ -37,7 +37,7 @@ const BookList: React.FC = (): ReactElement => {
             <Container className={classes.bookCard} maxWidth="md">
                 <Grid container spacing={4}>
                     {books.map((book: Book, i: number) => (
-                        <Grid item key={i} xs={12} sm={6} md={4}>
+                        <Grid item key={i} xs={12} sm={6} md={4} lg={3}>
                             <BookCard title={book.name} author={book.author} url={book.url} />
                         </Grid>
                     ))}
