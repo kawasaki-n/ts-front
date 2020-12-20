@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type SideMenuProps = {
   window?: () => Window;
-  mobileOpen?: boolean;
-  toggleFunc?: VoidFunction;
+  mobileOpen: boolean;
+  toggleFunc: VoidFunction;
 };
 
 const SideMenu: React.FC<SideMenuProps> = (
@@ -36,11 +36,17 @@ const SideMenu: React.FC<SideMenuProps> = (
   const classes = useStyles();
   const theme = useTheme();
 
+  const closeDrawer = () => {
+    if (mobileOpen) {
+      toggleFunc();
+    }
+  }
+
   const drawer = (
     <div>
       <Toolbar />
       <List>
-        <ListItem button key="Books" component={Link} to={"/bookList"}>
+        <ListItem button key="Books" component={Link} to={"/bookList"} onClick={closeDrawer}>
           <ListItemIcon>
             <BookIcon />
           </ListItemIcon>
