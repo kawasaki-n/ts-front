@@ -25,7 +25,7 @@ const BookList: React.FC = (): ReactElement => {
     const classes = useStyles();
     const [books, setBooks] = useState<Book[]>([]);
     const fetchBooks = () => {
-        fetch("http://localhost:8080/api/books/all")
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/books/all")
         .then(res => res.json())
         .then((res) => {
             setBooks(res.books);

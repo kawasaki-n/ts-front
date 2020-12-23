@@ -31,7 +31,7 @@ const BookForm: React.FC = (): ReactElement => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(values);
-        fetch('http://localhost:8080/api/books/add', {
+        fetch(process.env.REACT_APP_BACKEND_URL+'/api/books/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

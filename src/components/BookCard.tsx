@@ -29,7 +29,7 @@ const useSytles = makeStyles(() =>
 const BookCard: React.FC<BookCardProps> = (props: BookCardProps): ReactElement => {
     const classes = useSytles();
     const handleDelete = (id: number) => {
-        fetch("http://localhost:8080/api/books/delete/"+id, {
+        fetch(process.env.REACT_APP_BACKEND_URL+"/api/books/delete/"+id, {
             method: 'DELETE',
         })
         .then(res => res.json())
