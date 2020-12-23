@@ -50,7 +50,7 @@ const BookForm: React.FC = (): ReactElement => {
 
     return(
         <form className={classes.form} onSubmit={handleSubmit}>
-            <TextField id="name" label="Name" value={values.name} onChange={handleChange} fullWidth />
+            <TextField id="name" label="Name" value={values.name} onChange={handleChange} fullWidth required />
             <TextField id="author" label="Author" value={values.author} onChange={handleChange} fullWidth />
             <TextField id="url" label="URL" value={values.url} onChange={handleChange} fullWidth />
             <Button type="submit" variant="contained" color="primary" startIcon={<SaveIcon />} fullWidth>Save</Button>
